@@ -28,7 +28,7 @@
       reverse: value.reverse || false,
       speed: value.speed || 0.15,
       preserveInitialPosition: value.preserveInitialPosition === false ? value.preserveInitialPosition : true,
-      direction: value.direction || 'y',
+      direction: value.direction || "y",
       limit: value.limit || null,
       mobileMaxWidth: value.mobileMaxWidth || 768,
       isDisabled: value.disabled || false
@@ -36,7 +36,7 @@
 
     if (settings.background) {
       settings.speed = value.speed || 0.02;
-      settings.limit = {
+      settings.limit = value.limit || {
         min: 0,
         max: 100
       };
@@ -98,7 +98,7 @@
   function parallaxBackgroundPosition(el, offset, direction) {
     el.style.transition = "background-position 0.1s ease-out";
 
-    if (direction === 'y') {
+    if (direction === "y") {
       el.style.backgroundPosition = "50% ".concat(offset, "%");
     } else {
       el.style.backgroundPosition = "".concat(offset, "% 50%");
@@ -111,7 +111,7 @@
   }
 
   function addParallaxValueAsCssVariable(el, offset) {
-    el.style.setProperty('--parallax-value', offset);
+    el.style.setProperty("--parallax-value", offset);
   }
 
   var isInViewport = function isInViewport(el) {

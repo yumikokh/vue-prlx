@@ -142,6 +142,8 @@ function parallaxBackgroundPosition(el, offset, direction, defaultValue) {
   } else {
     el.style.backgroundPosition = `${defaultValue + offset}% 50%`;
   }
+
+  addParallaxValueAsCssVariable(el, offset);
 }
 
 function parallaxTransform(el, offset, direction) {
@@ -149,6 +151,7 @@ function parallaxTransform(el, offset, direction) {
   el.style.transform = `translate${direction.toUpperCase()}(${Math.round(
     offset
   )}px)`;
+  addParallaxValueAsCssVariable(el, offset);
 }
 
 function addParallaxValueAsCssVariable(el, offset) {

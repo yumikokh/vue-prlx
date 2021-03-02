@@ -104,11 +104,14 @@
     } else {
       el.style.backgroundPosition = "".concat(defaultValue + offset, "% 50%");
     }
+
+    addParallaxValueAsCssVariable(el, offset);
   }
 
   function parallaxTransform(el, offset, direction) {
     el.style.transition = "transform 0.1s ease-out";
     el.style.transform = "translate".concat(direction.toUpperCase(), "(").concat(Math.round(offset), "px)");
+    addParallaxValueAsCssVariable(el, offset);
   }
 
   function addParallaxValueAsCssVariable(el, offset) {

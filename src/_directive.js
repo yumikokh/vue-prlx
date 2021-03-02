@@ -53,6 +53,9 @@ function onBind(el, { modifiers = {}, value = {} }) {
 
     // {boolean} – is parallax disabled
     isDisabled: value.disabled || false,
+
+    // [original] default value
+    defaultValue: value.defaultValue || 0,
   };
 
   // DEFAULT SETTINGS FOR BACKGROUND-POSITION
@@ -128,16 +131,16 @@ function animate(el, scrollPosition, settings) {
     parallaxType = parallaxTransform;
   }
 
-  parallaxType(el, offset, settings.direction);
+  parallaxType(el, offset, settings.direction, settings.defaultValue);
 }
 
-function parallaxBackgroundPosition(el, offset, direction) {
+function parallaxBackgroundPosition(el, offset, direction, defaultValue) {
   el.style.transition = `background-position 0.1s ease-out`;
 
   if (direction === "y") {
-    el.style.backgroundPosition = `50% ${offset}%`;
+    el.style.backgroundPosition = `50% ${defaultValue + offset}%`;
   } else {
-    el.style.backgroundPosition = `${offset}% 50%`;
+    el.style.backgroundPosition = `${defaultValue + offset}% 50%`;
   }
 }
 

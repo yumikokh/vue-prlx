@@ -25,7 +25,8 @@ function onBind(el, _ref) {
     direction: value.direction || "y",
     limit: value.limit || null,
     mobileMaxWidth: value.mobileMaxWidth || 768,
-    isDisabled: value.disabled || false
+    isDisabled: value.disabled || false,
+    defaultValue: value.defaultValue || 0
   };
 
   if (settings.background) {
@@ -86,16 +87,16 @@ function animate(el, scrollPosition, settings) {
     parallaxType = parallaxTransform;
   }
 
-  parallaxType(el, offset, settings.direction);
+  parallaxType(el, offset, settings.direction, settings.defaultValue);
 }
 
-function parallaxBackgroundPosition(el, offset, direction) {
+function parallaxBackgroundPosition(el, offset, direction, defaultValue) {
   el.style.transition = "background-position 0.1s ease-out";
 
   if (direction === "y") {
-    el.style.backgroundPosition = "50% ".concat(offset, "%");
+    el.style.backgroundPosition = "50% ".concat(defaultValue + offset, "%");
   } else {
-    el.style.backgroundPosition = "".concat(offset, "% 50%");
+    el.style.backgroundPosition = "".concat(defaultValue + offset, "% 50%");
   }
 }
 
